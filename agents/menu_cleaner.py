@@ -25,7 +25,7 @@ class Menu(BaseModel):
     piatti: List[Piatto] = Field(..., default_factory=list, description="Lista dei piatti nel menu")
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "required": ["nome_ristorante", "chef", "nome_pianeta", "nome_menu", "licenze", "piatti"]
         }
 
@@ -78,11 +78,7 @@ def extract_pdfs(pdf_directory, output_file):
             result = structured_llm.invoke(messages)
             result_dict = result.dict() 
             all_results.append(result_dict)
-            logger.info(str(result_dict))
-            logger.info(type(result_dict))
     
     with open(output_file, 'w') as f:
         json.dump(all_results, f, ensure_ascii=False, indent=4)
     logger.info(f"All results written to {output_file}")
-
-
