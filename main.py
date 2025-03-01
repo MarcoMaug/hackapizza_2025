@@ -1,7 +1,10 @@
 from utils.logger import setup_logger
 from graphs.planet_graph import app
+from agents.menu_cleaner import extract_pdfs
 
 logger = setup_logger("main")
+
+extract_pdfs("./data/menu", "./data/menu_estratti.json")
 
 logger.info("Starting AI pipeline...")
 

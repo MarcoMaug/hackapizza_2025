@@ -2,3 +2,5 @@
 /logs
 **/__pycache__/
 diagram.png
+appunti.txt
+.env
