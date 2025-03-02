@@ -21,6 +21,8 @@ prompt_filtro_licenze_ingredienti = """rimuovi dai menu indicati i piatti che NO
                                         Fai attenzione alle condizioni di 'e' e 'o' presenti nell'user message."""
 output = app.invoke({
     "user_message": user_message,
+    "prompt_message_quantitativo":"Trasforma la richiesta dell'utente in un messaggio quantitativo, metti in evidenza le condizioni",
+    "user_message_quantitativo": "",
     "filtro_distanze_menu": "",
     "prompt_filtro_licenze_ingredienti": prompt_filtro_licenze_ingredienti,
     "filtro_licenze_ingredienti": "Questo è il prompt aggiuntivo per il secondo agente",
