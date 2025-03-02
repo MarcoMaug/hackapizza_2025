@@ -7,6 +7,9 @@ from pydantic import BaseModel, Field
 from typing import List
 import json
 
+class QueryQuantitativa(BaseModel):
+    query: str = Field(..., description="La query dell'utente in forma pseudo-codice")
+
 class Piatto(BaseModel):
     nome_piatto: str = Field(..., description="Il nome del piatto")
     ingredienti: List[str] = Field(default_factory=list, description="Lista degli ingredienti")
@@ -21,7 +24,7 @@ class Menu(BaseModel):
     chef: str = Field(..., description="Nome dello chef")
     nome_pianeta: str = Field(..., description="Nome del pianeta")
     nome_menu: str = Field(..., alias="nome menu", description="Nome del menu")
-    licenze: List[Licenza] = Field(..., default_factory=list, description="Licenze speciali e il loro numero")
+    licenze_chef: List[Licenza] = Field(..., default_factory=list, description="Licenze possedute dallo chef del ristorante")
     piatti: List[Piatto] = Field(..., default_factory=list, description="Lista dei piatti nel menu")
 
 class Menus(BaseModel):
@@ -29,7 +32,7 @@ class Menus(BaseModel):
 
     class Config:
         json_schema_extra = {
-            "required": ["nome_ristorante", "chef", "nome_pianeta", "nome_menu", "licenze", "piatti"]
+            "required": ["nome_ristorante", "chef", "nome_pianeta", "nome_menu", "licenze_chef", "piatti"]
         }
 
 

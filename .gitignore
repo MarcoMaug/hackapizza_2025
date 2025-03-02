@@ -3,4 +3,5 @@
 **/__pycache__/
 diagram.png
 appunti.txt
+test_pipeline.ipynb
 .env

@@ -4,7 +4,7 @@
         "chef": "Maestro Alessandro Stellanova",
         "nome_pianeta": "Pandora",
         "nome_menu": "Sinfonia Cosmica",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 1
@@ -194,7 +194,7 @@
         "chef": "Crina Cosmi",
         "nome_pianeta": "Klyntar",
         "nome_menu": "Galassia di Sapori Interstellari",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Temporale",
                 "livello": 1
@@ -318,7 +318,7 @@
         "chef": "Aurora Celestini",
         "nome_pianeta": "Ego",
         "nome_menu": "Sinfonia Cosmica",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 3
@@ -462,7 +462,7 @@
         "chef": "Maestro Alessio \"Eterno\" Stellaris",
         "nome_pianeta": "Ego",
         "nome_menu": "Menu",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 4
@@ -628,7 +628,7 @@
         "chef": "Alessandro Chronos",
         "nome_pianeta": "Cybertron",
         "nome_menu": "Sinfonia Tempolare Galattica",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Temporale",
                 "livello": 3
@@ -831,7 +831,7 @@
         "chef": "Jessica Cosmica",
         "nome_pianeta": "Namecc",
         "nome_menu": "Menu Stellare",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 1
@@ -1026,7 +1026,7 @@
         "chef": "Alessandra Quanti",
         "nome_pianeta": "Tatooine",
         "nome_menu": "Sinfonia Quantistica delle Stelle",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 2
@@ -1218,7 +1218,7 @@
         "chef": "Alessandro Quantum",
         "nome_pianeta": "Asgard",
         "nome_menu": "Banchetto Asgardiano di Eccellenza Multidimensionale",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Quantistica",
                 "livello": 8
@@ -1371,7 +1371,7 @@
         "chef": "Alessandro Quantum",
         "nome_pianeta": "Mos Eisley",
         "nome_menu": "Menu",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Quantistica",
                 "livello": 11
@@ -1576,7 +1576,7 @@
         "chef": "Pierino \"Il Custode\" Temporali",
         "nome_pianeta": "Pandora",
         "nome_menu": "Menu",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "LTK",
                 "livello": 3
@@ -1772,7 +1772,7 @@
         "chef": "Alessandra Temporini",
         "nome_pianeta": "Pandora",
         "nome_menu": "Menu",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 4
@@ -1953,7 +1953,7 @@
         "chef": "Alessandra Novastella",
         "nome_pianeta": "Pandora",
         "nome_menu": "Serenata del Multiverso",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 3
@@ -2166,7 +2166,7 @@
         "chef": "Palissandro \"Sandro\" Luminetti",
         "nome_pianeta": "Asgard",
         "nome_menu": "Quadrifonia Cosmica: Sinfonia di Sapori e Dimensioni",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Temporale",
                 "livello": 1
@@ -2368,7 +2368,7 @@
         "chef": "Matteo Nexus",
         "nome_pianeta": "Pandora",
         "nome_menu": "Viaggio Gastronomico tra le Stelle",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Licenza Quantistica",
                 "livello": 2
@@ -2552,7 +2552,7 @@
         "chef": "Aurelio \"Starweaver\" Celestini",
         "nome_pianeta": "Tatooine",
         "nome_menu": "Menu",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 5
@@ -2757,7 +2757,7 @@
         "chef": "Isabella Quantum-Stellari",
         "nome_pianeta": "Tatooine",
         "nome_menu": "Galassia Sensoriale",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 4
@@ -2927,7 +2927,7 @@
         "chef": "Alice Quantum-Rossi",
         "nome_pianeta": "Namecc",
         "nome_menu": "Menu",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Quantistica",
                 "livello": 15
@@ -3105,7 +3105,7 @@
         "chef": "Alessandro Stellanova",
         "nome_pianeta": "Pandora",
         "nome_menu": "Menu",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 5
@@ -3293,7 +3293,7 @@
         "chef": "Alessandra Nova",
         "nome_pianeta": "Krypton",
         "nome_menu": "Nebulosa Galattica",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 4
@@ -3480,7 +3480,7 @@
         "chef": "Alessandra Tempesti",
         "nome_pianeta": "Klyntar",
         "nome_menu": "Galassia Riflessa",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Controllo Temporale",
                 "livello": 3
@@ -3647,7 +3647,7 @@
         "chef": "Aurora Vessanti",
         "nome_pianeta": "Ego",
         "nome_menu": "Galassia Infinita: Viaggio tra Memorie e Stelle",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Sensibilità Psionica",
                 "livello": 3
@@ -3828,7 +3828,7 @@
         "chef": "Alessandro Zod-Marinetti",
         "nome_pianeta": "Krypton",
         "nome_menu": "Gastronomia Quantistica",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Licenza Quantistica",
                 "livello": 4
@@ -3982,7 +3982,7 @@
         "chef": "Alessandro Quantum",
         "nome_pianeta": "Krypton",
         "nome_menu": "Menu",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Licenza Psionica",
                 "livello": 2
@@ -4176,7 +4176,7 @@
         "chef": "Luna Celestini",
         "nome_pianeta": "Ego",
         "nome_menu": "Rinascita Cosmica",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 4
@@ -4392,7 +4392,7 @@
         "chef": "Aurora Stellaris",
         "nome_pianeta": "Pandora",
         "nome_menu": "Menu Quantico",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 3
@@ -4600,7 +4600,7 @@
         "chef": "Alessandra \"Nova\" Celestini",
         "nome_pianeta": "Tatooine",
         "nome_menu": "La Creazione di Nova",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 4
@@ -4794,7 +4794,7 @@
         "chef": "Alessandro Temporini",
         "nome_pianeta": "Arrakis",
         "nome_menu": "Menu delle Dune Stellari",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 4
@@ -5009,7 +5009,7 @@
         "chef": "Asteria Nova",
         "nome_pianeta": "Dimensione Cosmica",
         "nome_menu": "Menu Cosmico",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Tecnologia LTK",
                 "livello": 4
@@ -5168,7 +5168,7 @@
         "chef": "Alessandra \"Memory Weaver\" Luminetti",
         "nome_pianeta": "Arrakis",
         "nome_menu": "Menu dei Ricordi Celesti",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Psionica",
                 "livello": 4
@@ -5337,7 +5337,7 @@
         "chef": "Alessandro-Pierpaolo-Jack Quantum",
         "nome_pianeta": "Pandora",
         "nome_menu": "Viaggio nel Tempo e nel Gusto",
-        "licenze": [
+        "licenze_chef": [
             {
                 "nome_licenza": "Maestria della Quantistica",
                 "livello": 11
