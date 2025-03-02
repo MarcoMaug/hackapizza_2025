@@ -24,6 +24,9 @@ class Menu(BaseModel):
     licenze: List[Licenza] = Field(..., default_factory=list, description="Licenze speciali e il loro numero")
     piatti: List[Piatto] = Field(..., default_factory=list, description="Lista dei piatti nel menu")
 
+class Menus(BaseModel):
+    menus: List[Menu] = Field(default_factory=list)
+
     class Config:
         json_schema_extra = {
             "required": ["nome_ristorante", "chef", "nome_pianeta", "nome_menu", "licenze", "piatti"]

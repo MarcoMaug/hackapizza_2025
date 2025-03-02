@@ -1,5 +1,5 @@
 from utils.logger import setup_logger
-from graphs.planet_graph import app
+from graphs.agent_graph import app
 from agents.menu_cleaner import extract_pdfs
 import os
 
@@ -12,8 +12,21 @@ if not os.path.exists(json_input_menu_estratti):
 
 logger.info("Starting AI pipeline...")
 
-input_data = {"messages": "Quali sono i piatti che necessitano di una licenza di grado 3 o superiore per la preparazione e sono serviti in un ristorante che si trova entro un raggio di 659 anni luce dal pianeta Namecc, Namecc incluso?"}
-output = app.invoke(input_data)
+
+user_message = "Quali piatti possono essere trovati, preparati da uno chef con almeno la licenza P di grado 5, che includono Teste di Idra o che sono realizzati utilizzando la tecnica della Bollitura Entropica Sincronizzata?"
+prompt_filtro_licenze_ingredienti = """rimuovi dai menu indicati i piatti che NON soddisfano i criteri presenti nell'user message. 
+                                        Considera che l'utente può abbbreviare i nomi delle licenze: licenza Q = licenza Quantistica;
+                                        licenza t = licenza Temporale; licenza p = licenza Psionica; licenza g = licenza Gravitazionale;
+                                        licenza Mx = licenza magnetica; licenza e+ = licenza antimateria.
+                                        Fai attenzione alle condizioni di 'e' e 'o' presenti nell'user message."""
+output = app.invoke({
+    "user_message": user_message,
+    "filtro_distanze_menu": "",
+    "prompt_filtro_licenze_ingredienti": prompt_filtro_licenze_ingredienti,
+    "filtro_licenze_ingredienti": "Questo è il prompt aggiuntivo per il secondo agente",
+    "output_filtro_licenze_ingredienti": ""
+})
+
 
 output_path = './diagram.png'
 with open(output_path, 'wb') as f:

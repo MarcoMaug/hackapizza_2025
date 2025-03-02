@@ -1,5 +1,7 @@
+
 from utils.logger import setup_logger
 from pydantic import BaseModel, Field
+from typing import Optional
 import pandas as pd
 import json
 from langchain_openai import ChatOpenAI
@@ -9,8 +11,8 @@ import os
 
 
 class Riferimento(BaseModel):
-    pianeta_riferimento: str = Field(None, description="Il pianeta di riferimento")
-    max_distance: float = Field(None, description="La distanza massima")
+    pianeta_riferimento: Optional[str] = Field(None, description="Il pianeta di riferimento")
+    max_distance: Optional[float] = Field(None, description="La distanza massima")
 
 # Creiamo il logger per questo modulo
 logger = setup_logger("filtro_distanze")
@@ -19,8 +21,6 @@ os.environ.get("OPENAI_API_KEY")
 
 llm = ChatOpenAI(model="gpt-4o-mini")
 structured_llm = llm.with_structured_output(Riferimento)
-
-prompt="trova il pianeta di riferimento e la distanza massima nella seguente query. Se non sono presenti, usa None per entrambi." 
 
 # Funzione per caricare i dati dai file
 def load_data():
@@ -32,7 +32,8 @@ def load_data():
 
 # Funzione per interpretare la query usando ChatOpenAI
 def filtro_distanze(messages):
-    result = structured_llm.invoke(messages)
+    prompt = "Individua il pianeta di riferimento e la distanza massima indicata dall'utente. Se non sono presenti valorizza i campi di output come None"
+    result = structured_llm.invoke(f"Istruzioni:{prompt}. user_message: {messages}")
     try:
         criteria = result.dict() 
         logger.info(f"Risultato pianeta e distanza max: {criteria}")
@@ -47,6 +48,9 @@ def find_matching_menu(messages, distanze):
     criteria = filtro_distanze(messages)
     reference_planet = criteria.get("pianeta_riferimento")
     max_distance = criteria.get("max_distance")
+    if reference_planet is None:
+        reference_planet = "Tatooine"
+        max_distance = 9999999
     
     try:
         # Ottieni le distanze dal pianeta di riferimento dalla matrice CSV
@@ -68,10 +72,11 @@ def find_matching_menu(messages, distanze):
 
 # Funzione agente per LangGraph
 def agent_find_menu(state: State) -> State:
-    messages = state["messages"]
+    messages = state["user_message"]
     logger.info(f"Query: {messages}")
     distanze = load_data()
-    results = find_matching_menu(messages, distanze)
-    logger.info(f"Risultati filtrati: {results}")
-    return state["messages"] + [results]
+    menu = find_matching_menu(messages, distanze)
+    logger.info(f"menu filtrati: {menu}")
+    state["filtro_distanze_menu"] = str(menu)
+    return state
 
