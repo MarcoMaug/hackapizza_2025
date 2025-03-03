@@ -5,6 +5,7 @@ from fuzzywuzzy import fuzz
 import os
 import json
 import ast
+import pandas as pd
 
 logger = setup_logger("main")
 
@@ -43,37 +44,66 @@ if not os.path.exists(json_input_menu_estratti):
 
 logger.info("Starting AI pipeline...")
 
+with open("./data/menu_estratti.json", "r") as f:
+    menu_estratti = json.load(f)
 
-user_message = "Quali piatti possono essere trovati, preparati da uno chef con almeno la licenza P di grado 5, che includono Teste di Idra o che sono realizzati utilizzando la tecnica della Bollitura Entropica Sincronizzata?"
-prompt_filtro_licenze_ingredienti = """rimuovi dai menu indicati i piatti che NON soddisfano i criteri presenti nella richiesta.
-                                        fai molta attenzione alla condizione sulla licenza della chef e sul suo livello se la licenza non soddisfa i criteri non considerare nessun piatto.
-                                        non inventare piatti che non sono presenti nel menu"""
-output = app.invoke({
-    "user_message": user_message,
-    "prompt_message_quantitativo":"""estrai solo le informazioni quantitative e le condizioni e trasormale in pseudo-codice fai attenzione agli ingredienti, alle licenze e alle tecniche da utilizzare.
-                                        Considera che l'utente può abbbreviare i nomi delle licenze: licenza Q = licenza Quantistica;
-                                        licenza t = licenza Temporale; licenza p = licenza Psionica; licenza g = licenza Gravitazionale;
-                                        licenza Mx = licenza magnetica; licenza e+ = licenza antimateria. traducile con il loro nome completo.
-                                        Genera output di questo tipo CONDIZIONI:
-                                            1. Lo chef deve avere almeno la licenza Psionica di grado 5.
-                                            2. Il piatto deve soddisfare almeno una delle seguenti condizioni:
-                                                a. Contenere l'ingrediente "Teste di Idra".
-                                                b. Essere realizzato con la tecnica "Bollitura Entropica Sincronizzata""",
-    "user_message_quantitativo": "",
-    "filtro_distanze_menu": "",
-    "prompt_filtro_licenze_ingredienti": prompt_filtro_licenze_ingredienti,
-    "output_filtro_licenze_ingredienti": ""
-})
+def loop_get_piatti(user_message):
+    prompt_filtro_licenze_ingredienti = """rimuovi dai menu indicati i piatti che NON soddisfano i criteri presenti nella richiesta.
+                                            fai molta attenzione alla condizione sulla licenza della chef e sul suo livello se la licenza non soddisfa i criteri non considerare nessun piatto.
+                                            non inventare piatti che non sono presenti nel menu"""
+    output = app.invoke({
+        "user_message": user_message,
+        "prompt_message_quantitativo":"""estrai solo le informazioni quantitative e le condizioni e trasormale in pseudo-codice fai attenzione agli ingredienti, alle licenze e alle tecniche da utilizzare.
+                                            Considera che l'utente può abbbreviare i nomi delle licenze: licenza Q = licenza Quantistica;
+                                            licenza t = licenza Temporale; licenza p = licenza Psionica; licenza g = licenza Gravitazionale;
+                                            licenza Mx = licenza magnetica; licenza e+ = licenza antimateria. traducile con il loro nome completo.
+                                            Possono anche non essere presenti informazioni quantitative, in tal caso restituisci il messaggio dell'utente. Non inventare informazioni
+                                            Esempio di domanda:
+                                            "Quali piatti possono essere trovati, preparati da uno chef con almeno la licenza P di grado 5, che includono Teste di Idra o che sono realizzati utilizzando la tecnica della Bollitura Entropica Sincronizzata?"
+                                            deve essere tradotta in pseudo-codice come segue:
+                                            Genera output di questo tipo CONDIZIONI:
+                                                1. Lo chef deve avere almeno la licenza Psionica di grado 5 
+                                                AND
+                                                    (a. Contenere l'ingrediente "Teste di Idra". OR
+                                                    b. Essere realizzato con la tecnica "Bollitura Entropica Sincronizzata).""",
+        "user_message_quantitativo": "",
+        "filtro_distanze_menu": "",
+        "prompt_filtro_licenze_ingredienti": prompt_filtro_licenze_ingredienti,
+        "output_filtro_licenze_ingredienti": "",
+        "prompt_rag": """rimuovi dai menu indicati i piatti che NON soddisfano i criteri presenti nella richiesta
+                        Ricorda le seguenti regole:
+                        Chi fa parte dell'Ordine della Galassia di Andromeda deve rispettare la seguuente regola: Ogni piatto dev’essere rigorosamente privo di lattosio. 
+                        Chi fa parte dell'Ordine dei Naturalisti mangia ingredienti con nessuna trasformazione drastica, niente manipolazioni invasive, fare attenzione alle tecnica utilizzate.
+                        Chi fa parte dell'Ordine degli Armonisti mangiano piatti che parlano al cuore, adattandosi alle frequenze emotive del momento 
+                        considera il contesto dato.""",
+        "contex": [],
+        "routing": {"filtro_distanze":False,
+        "filtro_licenze_ingredienti":False,
+        "generate_rag":True},
+        "final_response": str(menu_estratti)
+    })
 
-logger.info(f"Pipeline output: {output}")
-logger.info(f"Pipeline output type: {type(output)}")
-logger.info(f"Pipeline output_filtro_licenze_ingredienti: {output['output_filtro_licenze_ingredienti']}")
-menus = ast.literal_eval(output['output_filtro_licenze_ingredienti'])
-logger.info(f"menu che soddisfano i criteri: {menus}")
+    logger.info(f"Pipeline output: {output}")
+    logger.info(f"Pipeline output type: {type(output)}")
+    logger.info(f"Pipeline final_response: {output['final_response']}")
+    menus = ast.literal_eval(output['final_response'])
+    logger.info(f"menu che soddisfano i criteri: {menus}")
 
-piatti_num = estrai_piatti_menu(menus)
-logger.info(f"piatti che soddisfano i criteri: {piatti_num}")
+    piatti_num = estrai_piatti_menu(menus)
 
-output_path = './diagram.png'
-with open(output_path, 'wb') as f:
-    f.write(app.get_graph().draw_mermaid_png()) 
+    logger.info(f"piatti che soddisfano i criteri: {piatti_num}")
+
+    return piatti_num
+
+domande_df = pd.read_csv("./data/domande.csv")
+results = []
+
+for i, domanda in domande_df.iterrows():
+    #user_message = domanda['domanda']
+    user_message = "Quali piatti utilizzano le Alghe Bioluminescenti e la tecnica di Idro-Cristallizzazione Sonora Quantistica, ma evitano la Marinatura Temporale Sincronizzata?"
+    piatti_num = loop_get_piatti(user_message)
+    results.append({"row_id": i + 1, "result": ",".join(map(str, piatti_num))})
+    
+    results_df = pd.DataFrame([results[-1]])  # Only the last result
+    results_df.to_csv("./data/results.csv", index=False, mode='a', header=(i == 0))
+

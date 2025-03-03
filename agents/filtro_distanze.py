@@ -19,7 +19,7 @@ logger = setup_logger("filtro_distanze")
 
 os.environ.get("OPENAI_API_KEY")
 
-llm = ChatOpenAI(model="gpt-4o-mini")
+llm = ChatOpenAI(model="gpt-4o-mini" , temperature=0)
 structured_llm = llm.with_structured_output(Riferimento)
 
 # Funzione per caricare i dati dai file
@@ -71,12 +71,13 @@ def find_matching_menu(messages, distanze):
     return matching_menus
 
 # Funzione agente per LangGraph
-def agent_find_menu(state: State) -> State:
+def agent_find_menu_distanze(state: State) -> State:
     messages = state["user_message"]
     logger.info(f"Query: {messages}")
     distanze = load_data()
     menu = find_matching_menu(messages, distanze)
     logger.info(f"menu filtrati: {menu}")
-    state["filtro_distanze_menu"] = str(menu)
+    state["final_response"] = str(menu)
+    state['routing']['filtro_distanze'] = False
     return state
 

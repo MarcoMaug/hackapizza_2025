@@ -10,7 +10,7 @@ logger = setup_logger("query_quantitativa")
 
 os.environ.get("OPENAI_API_KEY")
 
-llm = ChatOpenAI(model="gpt-4o")
+llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
 template = """
 Istruzioni: {instructions}

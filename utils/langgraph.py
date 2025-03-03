@@ -8,3 +8,7 @@ class State(TypedDict):
     filtro_distanze_menu: str
     prompt_filtro_licenze_ingredienti: str
     output_filtro_licenze_ingredienti: str
+    prompt_rag: str
+    context: list
+    routing: dict
+    final_response: str

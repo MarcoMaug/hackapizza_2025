@@ -14,7 +14,7 @@ logger = setup_logger("filtro_licenze_ingredienti")
 
 os.environ.get("OPENAI_API_KEY")
 
-llm = ChatOpenAI(model="gpt-4o")
+llm = ChatOpenAI(model="gpt-4o" , temperature=0)
 structured_llm = llm.with_structured_output(Menu)
 
 template = """
@@ -33,7 +33,7 @@ def rimuovi_menu_senza_piatti(menus):
 # Funzione per interpretare la query usando ChatOpenAI
 def agent_filtro_licenze_ingredienti(state: State) -> State:
     prompt = PromptTemplate.from_template(template)
-    all_menus = ast.literal_eval(state['filtro_distanze_menu'])
+    all_menus = ast.literal_eval(state['final_response'])
     filtered_menus = []
 
     for menu in all_menus:
@@ -50,7 +50,6 @@ def agent_filtro_licenze_ingredienti(state: State) -> State:
             try:
                 logger.debug(f"Risultato type: {type(menu)}")
                 if menu['piatti'] != []:
-                    logger.debug(f"Risultato type bis: {type(menu)}")
                     filtered_menus.append(menu)
                     logger.info(f"piatti che soddisfano i criteri: {menu}")
             except Exception as e:
@@ -59,5 +58,6 @@ def agent_filtro_licenze_ingredienti(state: State) -> State:
             logger.error(f"OpenAI ha rifiutato la richiesta per il menu {menu}.")
             
 
-    state['output_filtro_licenze_ingredienti'] = str(filtered_menus)
+    state['final_response'] = str(filtered_menus)
+    state['routing']['filtro_licenze_ingredienti'] = False
     return state

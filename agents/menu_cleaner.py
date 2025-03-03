@@ -7,6 +7,21 @@ from pydantic import BaseModel, Field
 from typing import List
 import json
 
+class DetectAction(BaseModel):
+    filtro_distanze: bool = Field(..., description="l'utente fa una richiesta con delle distanze da considerare")
+    filtro_licenze_ingredienti: bool = Field(..., description="l'utente fa una richiesta con delle licenze e/o ingredienti e/o delle tecniche modalità, di cottura da considerare")
+    generate_rag: bool = Field(..., description="rag è necessario quando l'utente chiede qualcosa sui limiti di alcuni ingredienti o requisiti generici che non rientrano nelle casistiche precedenti o informazioni sugli Ordini di Andromeda, dei Naturalisti e degli Armonisti")
+
+    def set_field(self, field_name: str, value: bool):
+        if hasattr(self, field_name):
+            setattr(self, field_name, value)
+        else:
+            raise ValueError(f"Field {field_name} does not exist in DetectAction")
+
+    def to_dict(self):
+        return self.model_dump()
+
+
 class QueryQuantitativa(BaseModel):
     query: str = Field(..., description="La query dell'utente in forma pseudo-codice")
 
@@ -40,7 +55,7 @@ logger = setup_logger("menu_cleaner")
 
 os.environ.get("OPENAI_API_KEY")
 
-llm = ChatOpenAI(model="gpt-4o-mini")
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 structured_llm = llm.with_structured_output(Menu)
 
 prompt="Estrai dal testo le seguenti inforazioni utili"
