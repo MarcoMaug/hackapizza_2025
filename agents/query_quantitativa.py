@@ -1,7 +1,7 @@
 from utils.logger import setup_logger
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
-from agents.menu_cleaner import QueryQuantitativa
+from agents.menu_cleaner import QueryBuilderFormat
 from utils.langgraph import State
 import os
 
@@ -16,7 +16,7 @@ template = """
 Istruzioni: {instructions}
 user_message: {user_message}
 """
-structured_llm = llm.with_structured_output(QueryQuantitativa)
+structured_llm = llm.with_structured_output(QueryBuilderFormat)
 
 # Funzione per interpretare la query usando ChatOpenAI
 def agent_query_quantitativa(state: State) -> State:
@@ -27,5 +27,5 @@ def agent_query_quantitativa(state: State) -> State:
     )
     result = structured_llm.invoke(formatted_prompt)
     logger.info(f"Risultato della query quantitativa: {result}")
-    state['user_message_quantitativo'] = str(result)
+    state['user_message_quantitativo'] = result
     return state

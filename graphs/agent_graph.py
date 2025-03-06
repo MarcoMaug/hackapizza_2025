@@ -1,6 +1,6 @@
 from langgraph.graph import StateGraph, START, END
 from agents.filtro_distanze import agent_find_menu_distanze
-from agents.filtro_licenze_ingredienti import agent_filtro_licenze_ingredienti
+from agents.filtro_licenze_ingredienti import algoritmo_filtro_licenze_ingredienti
 from agents.query_quantitativa import agent_query_quantitativa
 from agents.rag import retrieve, generate_rag
 from agents.detect_actions import detect_actions
@@ -52,7 +52,7 @@ graph_builder.add_node("nothing1", nothing1)
 graph_builder.add_node("nothing2", nothing2)
 #graph_builder.add_node("is_filtro_licenze_ingredienti_condition", is_filtro_licenze_ingredienti)
 graph_builder.add_node("query_quantitativa", agent_query_quantitativa)
-graph_builder.add_node("filtro_licenze_ingredienti", agent_filtro_licenze_ingredienti)
+graph_builder.add_node("filtro_licenze_ingredienti", algoritmo_filtro_licenze_ingredienti)
 #graph_builder.add_node("is_generate_rag_condition", is_generate_rag)
 graph_builder.add_node("retrieve", retrieve)
 graph_builder.add_node("generate_rag", generate_rag)

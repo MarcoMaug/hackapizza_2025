@@ -3,14 +3,37 @@ import os
 from utils.logger import setup_logger
 from langchain_openai import ChatOpenAI
 import os
-from pydantic import BaseModel, Field
-from typing import List
+from pydantic import BaseModel, Field 
+from typing import List, Optional
 import json
+
+class LicenzaChef(BaseModel):
+    nome: str = Field(default_factory="", description="Nome della licenza, non ripetere la parola licenza")
+    livello_minimo: int = Field(default_factory=0)
+
+class OrCondition(BaseModel):
+    field: str = Field(..., description="Campo su cui applicare la condizione OR")
+    values: List[str] = Field(default_factory=list, description="Valori per la condizione OR")
+
+
+class QueryBuilderFormat(BaseModel):
+    chef_esclusi: List[str] = Field(default_factory=list)
+    chef_inclusi: List[str] = Field(default_factory=list, description="se gli sono in condizione di or non inserirli qui")
+    ristoranti_esclusi: List[str] = Field(default_factory=list)
+    ristoranti_inclusi: List[str] = Field(default_factory=list, description="se i ristoranti sono in condizione di or non inserirli qui")
+    pianeti_esclusi: List[str] = Field(default_factory=list, description="elenco dei pianeti possibili: Tatooine,Asgard,Namecc,Arrakis,Krypton,Pandora,Cybertron,Ego,Montressosr,Klyntar")
+    pianeti_inclusi: List[str] = Field(default_factory=list, description="elenco dei pianeti possibili: Tatooine,Asgard,Namecc,Arrakis,Krypton,Pandora,Cybertron,Ego,Montressosr,Klyntar")
+    licenze_chef: List[LicenzaChef] = Field(default_factory=list)
+    ingredienti_inclusi: List[str] = Field(default_factory=list, description="se gli ingredienti sono in condizione di or non inserirli qui")
+    ingredienti_esclusi: List[str] = Field(default_factory=list)
+    tecniche_incluse: List[str] = Field(default_factory=list, description="se la tecniche sono in condizione di or non inserirle qui")
+    tecniche_escluse: List[str] = Field(default_factory=list)
+    or_conditions: List[OrCondition] = Field(default_factory=list, description="Lista di condizioni OR")
 
 class DetectAction(BaseModel):
     filtro_distanze: bool = Field(..., description="l'utente fa una richiesta con delle distanze da considerare")
-    filtro_licenze_ingredienti: bool = Field(..., description="l'utente fa una richiesta con delle licenze e/o ingredienti e/o delle tecniche modalità, di cottura da considerare")
-    generate_rag: bool = Field(..., description="rag è necessario quando l'utente chiede qualcosa sui limiti di alcuni ingredienti o requisiti generici che non rientrano nelle casistiche precedenti o informazioni sugli Ordini di Andromeda, dei Naturalisti e degli Armonisti")
+    filtro_licenze_ingredienti: bool = Field(..., description="l'utente fa una richiesta con delle licenze e/o ingredienti e/o delle tecniche modalità, di cottura da considerare. ma anche ristoranti, chef, e pianeti senza considerare la distanza")
+    generate_rag: bool = Field(..., description="rag è necessario quando l'utente chiede qualcosa sui limiti di alcuni ingredienti o requisiti generici come teniche generali, e non quelle specifiche che ti sono state elencate. anche informazioni sugli Ordini di Andromeda, dei Naturalisti e degli Armonisti")
 
     def set_field(self, field_name: str, value: bool):
         if hasattr(self, field_name):
@@ -55,10 +78,20 @@ logger = setup_logger("menu_cleaner")
 
 os.environ.get("OPENAI_API_KEY")
 
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+llm = ChatOpenAI(model="gpt-4o", temperature=0)
 structured_llm = llm.with_structured_output(Menu)
 
-prompt="Estrai dal testo le seguenti inforazioni utili"
+prompt="""Estrai dal testo le seguenti inforazioni utili, ricorda che esistono solo le seguenti licenze e che possono essere abbreviate:
+                    Quantistica (potrebbe essere abbreviata con Q)
+                    Temporale (potrebbe essere abbreviata con t)
+                    Psionica (potrebbe essere abbreviata con P)
+                    Gravitazionale (potrebbe essere abbreviata con g)
+                    magnetica (potrebbe essere abbreviata con Mx)
+                    antimateria (potrebbe essere abbreviata con e+)
+                    luce (potrebbe essere abbreviata con c)
+                    ltk
+                    traducile con il loro nome completo.
+             """
 
 
 # Funzione per estrarre il testo dal PDF

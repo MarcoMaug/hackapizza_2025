@@ -17,7 +17,7 @@ template = """
 Istruzioni: determina se la query necessita di un filtro_distanze, filtro_licenze_ingredienti, oppure di rag. 
 rag è necessario quando l'utente chiede qualcosa sui limiti di alcuni ingredienti o requisiti generici che 
 non rientrano nelle casistiche precedenti. come ad esempio delle condizioni o informazioni sugli Ordini 
-di Andromeda, dei Naturalisti e degli Armonisti
+di Andromeda, dei Naturalisti e degli Armonisti.
 user_message: {user_message}
 """
 structured_llm = llm.with_structured_output(DetectAction)
