@@ -1,0 +1,354 @@
+{
+    "tecniche": [
+        {
+            "tecnica_generale": "Marinatura",
+            "tecnica_famiglia": "Marinatura",
+            "tecnica_specifica": "Marinatura a Infusione Gravitazionale"
+        },
+        {
+            "tecnica_generale": "Marinatura",
+            "tecnica_famiglia": "Marinatura",
+            "tecnica_specifica": "Marinatura Temporale Sincronizzata"
+        },
+        {
+            "tecnica_generale": "Marinatura",
+            "tecnica_famiglia": "Marinatura",
+            "tecnica_specifica": "Marinatura Psionica"
+        },
+        {
+            "tecnica_generale": "Marinatura",
+            "tecnica_famiglia": "Marinatura",
+            "tecnica_specifica": "Marinatura tramite Reazioni d'Antimateria Diluite"
+        },
+        {
+            "tecnica_generale": "Marinatura",
+            "tecnica_famiglia": "Marinatura",
+            "tecnica_specifica": "Marinatura Sotto Zero a Polarità Inversa"
+        },
+        {
+            "tecnica_generale": "Affumicatura",
+            "tecnica_famiglia": "Affumicatura",
+            "tecnica_specifica": "Affumicatura a Stratificazione Quantica"
+        },
+        {
+            "tecnica_generale": "Affumicatura",
+            "tecnica_famiglia": "Affumicatura",
+            "tecnica_specifica": "Affumicatura Temporale Risonante"
+        },
+        {
+            "tecnica_generale": "Affumicatura",
+            "tecnica_famiglia": "Affumicatura",
+            "tecnica_specifica": "Affumicatura Psionica Sensoriale"
+        },
+        {
+            "tecnica_generale": "Affumicatura",
+            "tecnica_famiglia": "Affumicatura",
+            "tecnica_specifica": "Affumicatura tramite Big Bang Microcosmico"
+        },
+        {
+            "tecnica_generale": "Affumicatura",
+            "tecnica_famiglia": "Affumicatura",
+            "tecnica_specifica": "Affumicatura Polarizzata a Freddo Iperbarico"
+        },
+        {
+            "tecnica_generale": "Fermentazione",
+            "tecnica_famiglia": "Fermentazione",
+            "tecnica_specifica": "Fermentazione Quantica a Strati Multiversali"
+        },
+        {
+            "tecnica_generale": "Fermentazione",
+            "tecnica_famiglia": "Fermentazione",
+            "tecnica_specifica": "Fermentazione Temporale Sincronizzata"
+        },
+        {
+            "tecnica_generale": "Fermentazione",
+            "tecnica_famiglia": "Fermentazione",
+            "tecnica_specifica": "Fermentazione Psionica Energetica"
+        },
+        {
+            "tecnica_generale": "Fermentazione",
+            "tecnica_famiglia": "Fermentazione",
+            "tecnica_specifica": "Fermentazione tramite Singolarità"
+        },
+        {
+            "tecnica_generale": "Fermentazione",
+            "tecnica_famiglia": "Fermentazione",
+            "tecnica_specifica": "Fermentazione Quantico Biometrica"
+        },
+        {
+            "tecnica_generale": "Impasto",
+            "tecnica_famiglia": "Tecniche di Impasto",
+            "tecnica_specifica": "Impasto Gravitazionale Vorticoso"
+        },
+        {
+            "tecnica_generale": "Impasto",
+            "tecnica_famiglia": "Tecniche di Impasto",
+            "tecnica_specifica": "Amalgamazione Sintetica Molecolare"
+        },
+        {
+            "tecnica_generale": "Impasto",
+            "tecnica_famiglia": "Tecniche di Impasto",
+            "tecnica_specifica": "Impasto a Campi Magnetici Dualistici"
+        },
+        {
+            "tecnica_generale": "Impasto",
+            "tecnica_famiglia": "Tecniche di Impasto",
+            "tecnica_specifica": "Sinergia Elettro-Osmotica Programmabile"
+        },
+        {
+            "tecnica_generale": "Impasto",
+            "tecnica_famiglia": "Tecniche di Impasto",
+            "tecnica_specifica": "Modellatura Onirica Tetrazionale"
+        },
+        {
+            "tecnica_generale": "Surgelamento",
+            "tecnica_famiglia": "Surgelamento",
+            "tecnica_specifica": "Cryo-Tessitura Energetica Polarizzata"
+        },
+        {
+            "tecnica_generale": "Surgelamento",
+            "tecnica_famiglia": "Surgelamento",
+            "tecnica_specifica": "Congelamento Bio-Luminiscente Sincronico"
+        },
+        {
+            "tecnica_generale": "Surgelamento",
+            "tecnica_famiglia": "Surgelamento",
+            "tecnica_specifica": "Cristallizzazione Temporale Reversiva"
+        },
+        {
+            "tecnica_generale": "Surgelamento",
+            "tecnica_famiglia": "Surgelamento",
+            "tecnica_specifica": "Congelazione Iperdimensionalmente Stratificata"
+        },
+        {
+            "tecnica_generale": "Surgelamento",
+            "tecnica_famiglia": "Surgelamento",
+            "tecnica_specifica": "Surgelamento Antimaterico a Risonanza Inversa"
+        },
+        {
+            "tecnica_generale": "Bollitura",
+            "tecnica_famiglia": "Bollitura",
+            "tecnica_specifica": "Ebollizione Magneto-Cinetica Pulsante"
+        },
+        {
+            "tecnica_generale": "Bollitura",
+            "tecnica_famiglia": "Bollitura",
+            "tecnica_specifica": "Bollitura Infrasonica Armonizzata"
+        },
+        {
+            "tecnica_generale": "Bollitura",
+            "tecnica_famiglia": "Bollitura",
+            "tecnica_specifica": "Bollitura Termografica a Rotazione Veloce"
+        },
+        {
+            "tecnica_generale": "Bollitura",
+            "tecnica_famiglia": "Bollitura",
+            "tecnica_specifica": "Bollitura Entropica Sincronizzata"
+        },
+        {
+            "tecnica_generale": "Bollitura",
+            "tecnica_famiglia": "Bollitura",
+            "tecnica_specifica": "Idro-Cristallizzazione Sonora Quantistica"
+        },
+        {
+            "tecnica_generale": "Grigliare",
+            "tecnica_famiglia": "Grigliare",
+            "tecnica_specifica": "Grigliatura a Energia Stellare DiV"
+        },
+        {
+            "tecnica_generale": "Grigliare",
+            "tecnica_famiglia": "Grigliare",
+            "tecnica_specifica": "Grigliatura Plasma Sintetico Risonante"
+        },
+        {
+            "tecnica_generale": "Grigliare",
+            "tecnica_famiglia": "Grigliare",
+            "tecnica_specifica": "Grigliatura Eletro-Molecolare a Spaziatura Variabile"
+        },
+        {
+            "tecnica_generale": "Grigliare",
+            "tecnica_famiglia": "Grigliare",
+            "tecnica_specifica": "Grigliatura Tachionica Refrattaria"
+        },
+        {
+            "tecnica_generale": "Grigliare",
+            "tecnica_famiglia": "Grigliare",
+            "tecnica_specifica": "Grigliatura Psionica Dinamica Ritmica"
+        },
+        {
+            "tecnica_generale": "Forno",
+            "tecnica_famiglia": "Forno",
+            "tecnica_specifica": "Cottura al Forno con Paradosso Temporale Cronospeculare"
+        },
+        {
+            "tecnica_generale": "Forno",
+            "tecnica_famiglia": "Forno",
+            "tecnica_specifica": "Cottura con Microonde Entropiche Sincronizzate"
+        },
+        {
+            "tecnica_generale": "Forno",
+            "tecnica_famiglia": "Forno",
+            "tecnica_specifica": "Cottura a Forno Dinamico Inversionale"
+        },
+        {
+            "tecnica_generale": "Forno",
+            "tecnica_famiglia": "Forno",
+            "tecnica_specifica": "Cottura Olografica Quantum Fluttuante"
+        },
+        {
+            "tecnica_generale": "Forno",
+            "tecnica_famiglia": "Forno",
+            "tecnica_specifica": "Cottura Geomagnetica Psicosincronizzata"
+        },
+        {
+            "tecnica_generale": "Vapore",
+            "tecnica_famiglia": "Vapore",
+            "tecnica_specifica": "Cottura a Vapore con Flusso di Particelle Isoarmoniche"
+        },
+        {
+            "tecnica_generale": "Vapore",
+            "tecnica_famiglia": "Vapore",
+            "tecnica_specifica": "Cottura a Vapore Ecodinamico Bilanciato"
+        },
+        {
+            "tecnica_generale": "Vapore",
+            "tecnica_famiglia": "Vapore",
+            "tecnica_specifica": "Cottura a Vapore Risonante Simbiotico"
+        },
+        {
+            "tecnica_generale": "Vapore",
+            "tecnica_famiglia": "Vapore",
+            "tecnica_specifica": "Cottura a Vapore Termocinetica Multipla"
+        },
+        {
+            "tecnica_generale": "Vapore",
+            "tecnica_famiglia": "Vapore",
+            "tecnica_specifica": "Cottura Idrodinamica Autoregolante"
+        },
+        {
+            "tecnica_generale": "Sottovuoto",
+            "tecnica_famiglia": "Sottovuoto",
+            "tecnica_specifica": "Cottura Sottovuoto Antimateria"
+        },
+        {
+            "tecnica_generale": "Sottovuoto",
+            "tecnica_famiglia": "Sottovuoto",
+            "tecnica_specifica": "Cottura Sottovuoto Multirealità Collassante"
+        },
+        {
+            "tecnica_generale": "Sottovuoto",
+            "tecnica_famiglia": "Sottovuoto",
+            "tecnica_specifica": "Cottura Sottovuoto Frugale Energeticamente Negativa"
+        },
+        {
+            "tecnica_generale": "Sottovuoto",
+            "tecnica_famiglia": "Sottovuoto",
+            "tecnica_specifica": "Cottura Sottovuoto Pulsar Magnetica"
+        },
+        {
+            "tecnica_generale": "Sottovuoto",
+            "tecnica_famiglia": "Sottovuoto",
+            "tecnica_specifica": "Cottura Sottovuoto Bioma Sintetico"
+        },
+        {
+            "tecnica_generale": "Saltare in Padella",
+            "tecnica_famiglia": "Saltare in Padella",
+            "tecnica_specifica": "Saltare in Padella Big Bang Termico"
+        },
+        {
+            "tecnica_generale": "Saltare in Padella",
+            "tecnica_famiglia": "Saltare in Padella",
+            "tecnica_specifica": "Saltare in Padella Realtà Energetiche Parallele"
+        },
+        {
+            "tecnica_generale": "Saltare in Padella",
+            "tecnica_famiglia": "Saltare in Padella",
+            "tecnica_specifica": "Saltare in Padella Singolarità Inversa"
+        },
+        {
+            "tecnica_generale": "Saltare in Padella",
+            "tecnica_famiglia": "Saltare in Padella",
+            "tecnica_specifica": "Saltare in Padella Sinergia Psionica"
+        },
+        {
+            "tecnica_generale": "Saltare in Padella",
+            "tecnica_famiglia": "Saltare in Padella",
+            "tecnica_specifica": "Saltare in Padella Classica"
+        },
+        {
+            "tecnica_generale": "Decostruzione",
+            "tecnica_famiglia": "Decostruzione",
+            "tecnica_specifica": "Decostruzione Atomica a Strati Energetici"
+        },
+        {
+            "tecnica_generale": "Decostruzione",
+            "tecnica_famiglia": "Decostruzione",
+            "tecnica_specifica": "Decostruzione Magnetica Risonante"
+        },
+        {
+            "tecnica_generale": "Decostruzione",
+            "tecnica_famiglia": "Decostruzione",
+            "tecnica_specifica": "Decostruzione Bio-Fotonica Emotiva"
+        },
+        {
+            "tecnica_generale": "Decostruzione",
+            "tecnica_famiglia": "Decostruzione",
+            "tecnica_specifica": "Decostruzione Ancestrale"
+        },
+        {
+            "tecnica_generale": "Decostruzione",
+            "tecnica_famiglia": "Decostruzione",
+            "tecnica_specifica": "Decostruzione Interdimensionale Lovecraftiana"
+        },
+        {
+            "tecnica_generale": "Sferificazione",
+            "tecnica_famiglia": "Sferificazione",
+            "tecnica_specifica": "Sferificazione a Gravità Psionica Variabile"
+        },
+        {
+            "tecnica_generale": "Sferificazione",
+            "tecnica_famiglia": "Sferificazione",
+            "tecnica_specifica": "Sferificazione Filamentare a Molecole Vibrazionali"
+        },
+        {
+            "tecnica_generale": "Sferificazione",
+            "tecnica_famiglia": "Sferificazione",
+            "tecnica_specifica": "Sferificazione Cromatica Interdimensionale"
+        },
+        {
+            "tecnica_generale": "Sferificazione",
+            "tecnica_famiglia": "Sferificazione",
+            "tecnica_specifica": "Sferificazione con Campi Magnetici Entropici"
+        },
+        {
+            "tecnica_generale": "Sferificazione",
+            "tecnica_famiglia": "Sferificazione",
+            "tecnica_specifica": "Sferificazione tramite Matrici Biofotiche"
+        },
+        {
+            "tecnica_generale": "Taglio",
+            "tecnica_famiglia": "Tecniche di Taglio",
+            "tecnica_specifica": "Taglio Dimensionale a Lame Fotofiliche"
+        },
+        {
+            "tecnica_generale": "Taglio",
+            "tecnica_famiglia": "Tecniche di Taglio",
+            "tecnica_specifica": "Taglio a Risonanza Sonica Rigenerativa"
+        },
+        {
+            "tecnica_generale": "Taglio",
+            "tecnica_famiglia": "Tecniche di Taglio",
+            "tecnica_specifica": "Affettamento a Pulsazioni Quantistiche"
+        },
+        {
+            "tecnica_generale": "Taglio",
+            "tecnica_famiglia": "Tecniche di Taglio",
+            "tecnica_specifica": "Taglio Sinaptico Biomimetico"
+        },
+        {
+            "tecnica_generale": "Taglio",
+            "tecnica_famiglia": "Tecniche di Taglio",
+            "tecnica_specifica": "Incisione Elettromagnetica Plasmica"
+        }
+    ]
+}

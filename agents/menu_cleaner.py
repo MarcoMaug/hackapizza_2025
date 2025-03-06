@@ -13,7 +13,7 @@ class LicenzaChef(BaseModel):
 
 class OrCondition(BaseModel):
     field: str = Field(..., description="Campo su cui applicare la condizione OR")
-    values: List[str] = Field(default_factory=list, description="Valori per la condizione OR")
+    values: List[str] = Field(default_factory=list, description="Valori per la condizione OR. Non inserire tecniche generali tipicamente fatte di una sola parola, come taglio o surgelamento. qui vanno inserite tecniche specifiche. Sirius Cosmo è il nome del libro di cucina non fa parte del nome della tacnica")
 
 
 class QueryBuilderFormat(BaseModel):
@@ -26,14 +26,14 @@ class QueryBuilderFormat(BaseModel):
     licenze_chef: List[LicenzaChef] = Field(default_factory=list)
     ingredienti_inclusi: List[str] = Field(default_factory=list, description="se gli ingredienti sono in condizione di or non inserirli qui")
     ingredienti_esclusi: List[str] = Field(default_factory=list)
-    tecniche_incluse: List[str] = Field(default_factory=list, description="se la tecniche sono in condizione di or non inserirle qui")
-    tecniche_escluse: List[str] = Field(default_factory=list)
+    tecniche_incluse: List[str] = Field(default_factory=list, description="se la tecniche sono in condizione di or non inserirle qui. inoltre non inserire tecniche generali tipicamente fatte di una sola parola, come taglio o surgelamento. qui vanno inserite tecniche specifiche. Sirius Cosmo è il nome del libro di cucina non fa parte del nome della tacnica")
+    tecniche_escluse: List[str] = Field(default_factory=list, description="non inserire tecniche generali tipicamente fatte di una sola parola, come taglio o surgelamento. qui vanno inserite tecniche specifiche. Sirius Cosmo è il nome del libro di cucina non fa parte del nome della tacnica")
     or_conditions: List[OrCondition] = Field(default_factory=list, description="Lista di condizioni OR")
 
 class DetectAction(BaseModel):
     filtro_distanze: bool = Field(..., description="l'utente fa una richiesta con delle distanze da considerare")
     filtro_licenze_ingredienti: bool = Field(..., description="l'utente fa una richiesta con delle licenze e/o ingredienti e/o delle tecniche modalità, di cottura da considerare. ma anche ristoranti, chef, e pianeti senza considerare la distanza")
-    generate_rag: bool = Field(..., description="rag è necessario quando l'utente chiede qualcosa sui limiti di alcuni ingredienti o requisiti generici come teniche generali, e non quelle specifiche che ti sono state elencate. anche informazioni sugli Ordini di Andromeda, dei Naturalisti e degli Armonisti")
+    generate_rag: bool = Field(..., description="rag è necessario quando l'utente chiede qualcosa sui limiti di alcuni ingredienti o requisiti generici come teniche generali come taglio, surgelamento, di solito in questi casi citano Sirius Cosmo e/o il manuale di cucina. anche informazioni sugli Ordini di Andromeda, dei Naturalisti e degli Armonisti")
 
     def set_field(self, field_name: str, value: bool):
         if hasattr(self, field_name):

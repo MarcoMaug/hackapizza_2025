@@ -1,6 +1,7 @@
 from utils.logger import setup_logger
 from graphs.agent_graph import app
 from agents.menu_cleaner import extract_pdfs
+from agents.estrai_manuale_cucina import estrazione_manuale_cucina
 from agents.filtro_licenze_ingredienti import normalizza_menu
 from fuzzywuzzy import fuzz
 import os
@@ -162,6 +163,14 @@ def estrai_piatti_menu(menus):
     return piatti_num
 
 
+
+
+pdf_path="./data/documents_raw/Manuale di Cucina.pdf"
+json_tecniche_estratte="./dettaglio_tecniche.json"
+if not os.path.exists(json_tecniche_estratte):
+    estrazione_manuale_cucina(pdf_path, json_tecniche_estratte)
+
+
 json_input_menu_estratti = "./data/menu_estratti.json"
 if not os.path.exists(json_input_menu_estratti):
     extract_pdfs("./data/menu", json_input_menu_estratti)
@@ -197,7 +206,7 @@ def loop_get_piatti(user_message):
                                             non inventare piatti che non sono presenti nel menu"""
     output = app.invoke({
         "user_message": user_message,
-        "prompt_message_quantitativo":"""estrai solo le informazioni quantitative e le condizioni, fatta eccezione per quelle sulla distanza, nella struttura JSON indicata fai attenzione agli ingredienti, alle licenze e alle tecniche da utilizzare.
+        "prompt_message_quantitativo":"""estrai solo le informazioni quantitative e le condizioni, fatta eccezione per quelle sulla distanza e sulle tecniche generali come 'impasto', 'taglio' e 'surgelamento' indicate da una sola parola, nella struttura JSON indicata fai attenzione agli ingredienti, alle licenze e alle tecniche da utilizzare.
                                             Non inventare ingredienti, tecniche o licenze che non sono presenti nella richiesta dell'utente
                                             Considera che l'utente può abbreviare i nomi delle licenze:
 
@@ -217,200 +226,6 @@ def loop_get_piatti(user_message):
                                             NON inventare condizioni su Licenze dello chef, l'utente deve specificare se vuole includere una condizione sulla licenza, ad esempio dicendo 
                                             che vuole un piatto con licenza gravitazionale almeno 2. Non è sufficiente il nome della licenza nella richiesta.   
                                             alcuni ingredienti hanno porzioni di nomi di licenze. 
- {
-   "licenze_chef": [
-    "antimateria",
-    "gravitazionale",
-    "luce",
-    "magnetica",
-    "psionica",
-    "quantistica",
-    "tecnologica",
-    "temporale"
-  ],
-  "ingredienti": [
-    "alghe bioluminescenti",
-    "amido di stellarion",
-    "baccacedro",
-    "baccacedro caramellato",
-    "bacche di baccacedro",
-    "balena spaziale",
-    "biscotti della galassia",
-    "brodo di liane di plasmodio",
-    "brodo di teste di idra",
-    "brodo di vero ghiaccio",
-    "buccia del baccacedro",
-    "burrobirra",
-    "carne delle teste di idra",
-    "carne di balena spaziale",
-    "carne di drago",
-    "carne di kraken",
-    "carne di mucca",
-    "carne di xenodonte",
-    "carpaccio di carne di kraken",
-    "carpaccio di funghi orbitali",
-    "chocobo wings",
-    "cioccorane",
-    "colonia di mycoflora",
-    "cristalli di memoria",
-    "cristalli di nebulite",
-    "cristalli di sale temporale",
-    "croissant celestiale",
-    "crononite",
-    "erba pipa",
-    "essenza di speziaria",
-    "essenza di tachioni",
-    "essenza di vuoto",
-    "farina di nettuno",
-    "fibra di sintetex",
-    "foglie di mandragora",
-    "foglie di nebulosa",
-    "frammenti di supernova",
-    "frutti del diavolo",
-    "funghi dell’etere",
-    "funghi orbitali",
-    "fusilli del vento",
-    "gnoccchi del crepuscolo",
-    "granuli di nebbia arcobaleno",
-    "impasto gravitazionale",
-    "lacrime di andromeda",
-    "lacrime di unicorno",
-    "latte+",
-    "lattuga namecciana",
-    "liane di plasmodio",
-    "materia oscura",
-    "muffa lunare",
-    "mycoflora fresca",
-    "nduja fritta tanto",
-    "nebbia arcobaleno",
-    "nettare di sirena",
-    "pane degli abissi",
-    "pane di farina di nettuno",
-    "pane di luce",
-    "petali di eco",
-    "pickle rick croccante",
-    "plasma vitale",
-    "polvere di crononite",
-    "polvere di pulsar",
-    "polvere di stelle",
-    "proteine di mare e terra",
-    "proteine rigenerative delle teste di idra",
-    "radici di gravità",
-    "radici di gravità e singolarità",
-    "radici di singolarità",
-    "ravioli al vaporeon",
-    "riso di cassandra",
-    "risotto dei multiversi",
-    "risotto galattico",
-    "sale temporale",
-    "salsa szechuan",
-    "salsa szechuan interdimensionale",
-    "sashimi di magicarp",
-    "scorza artica",
-    "shard di materia oscura",
-    "shard di prisma stellare",
-    "slurm",
-    "soufflé al vero ghiaccio",
-    "spaghi del sole",
-    "spezie melange",
-    "spore quantiche",
-    "succo di baccacedro",
-    "teste di idra",
-    "uova di fenice",
-    "vegetali sublimati",
-    "vero ghiaccio",
-    "xenodonte"
-  ],
-  "tecniche": [
-    "affettamento a pulsazioni quantistiche",
-    "affumicatura a stratificazione quantica",
-    "affumicatura polarizzata a freddo iperbarico",
-    "affumicatura psionica sensoriale",
-    "affumicatura temporal risonante",
-    "affumicatura tramite big bang microcosmico",
-    "amalgamazione sintetica molecolare",
-    "big bang microcosmico",
-    "bollitura entropica sincronizzata",
-    "bollitura infrasonica armonizzata",
-    "bollitura termografica a rotazione veloce",
-    "campi magnetici entropici",
-    "congelamento bio-luminiscente sincronico",
-    "congelazione iperdimensionalmente stratificata",
-    "cottura a forno dinamico inversionale",
-    "cottura a vapore con flusso di particelle isoarmoniche",
-    "cottura a vapore ecodinamico bilanciato",
-    "cottura a vapore risonante simbiotico",
-    "cottura a vapore termocinetica multipla",
-    "cottura al forno con paradosso temporale cronospeculare",
-    "cottura con microonde entropiche sincronizzate",
-    "cottura idrodinamica autoregolante",
-    "cottura olografica quantum fluttuante",
-    "cottura sottovuoto",
-    "cottura sottovuoto antimateria",
-    "cottura sottovuoto bioma sintetico",
-    "cottura sottovuoto frugale energeticamente negativa",
-    "cottura sottovuoto multirealità collassante",
-    "cottura sottovuoto pulsar magnetica",
-    "cristallizzazione temporale reversiva",
-    "cryo-tessitura energetica polarizzata",
-    "decostruzione ancestrale",
-    "decostruzione atomica a strati energetici",
-    "decostruzione bio-fotonica emotiva",
-    "decostruzione interdimensionale lovecraftiana",
-    "decostruzione magnetica risonante",
-    "ebollizione magneto-cinetica pulsante",
-    "fermentazione psionica energetica",
-    "fermentazione quantica a strati multiversali",
-    "fermentazione quantico biometrica",
-    "fermentazione temporale sincronizzata",
-    "flusso di particelle isoarmoniche",
-    "forno dinamico inversionale",
-    "gravitazionale",
-    "grigliatura a energia stellare div",
-    "grigliatura eletro-molecolare a spaziatura variabile",
-    "grigliatura plasma sintetico risonante",
-    "grigliatura psionica dinamica ritmica",
-    "idro-cristallizzazione sonora quantistica",
-    "impasto a campi magnetici dualistici",
-    "impasto gravitazionale vorticoso",
-    "incisione elettromagnetica plasmica",
-    "luminante",
-    "manipolazione gravitazionale",
-    "manipolazioni della luce",
-    "marinatura a infusione gravitazionale",
-    "marinatura psionica",
-    "marinatura sotto zero a polarità inversa",
-    "marinatura temporale sincronizzata",
-    "marinatura tramite reazioni d'antimateria diluite",
-    "modellatura onirica tetrazionale",
-    "padella classica",
-    "padella via realtà energetiche parallele",
-    "proiezioni olografiche quantum fluttuanti",
-    "pulsante magneto-cinetica",
-    "pulsazioni quantistiche",
-    "quantico biometrica",
-    "reazioni d'antimateria diluite",
-    "risonanza sonica rigenerativa",
-    "saltare in padella classica",
-    "saltare in padella realtà energetiche parallele",
-    "saltare in padella sinergia psionica",
-    "saltare in padella singolarità inversa",
-    "saltato in padella",
-    "sferificazione a gravità psionica variabile",
-    "sferificazione con campi magnetici entropici",
-    "sferificazione cromatica interdimensionale",
-    "sferificazione filamentare a molecole vibrazionali",
-    "sferificazione tramite matrici biofotiche",
-    "sinergia elettro-osmotica programmabile",
-    "sinergia psionica",
-    "sottovuoto antimateria",
-    "spore quantiche",
-    "stratificazione quantica",
-    "surgelamento antimaterico a risonanza inversa",
-    "taglio dimensionale a lame fotofiliche",
-    "taglio sinaptico biomimetico",
-    "vapore termocinetico multiplo"]
-    }
 
 
                                             """,
@@ -450,6 +265,8 @@ results = []
 for i, domanda in domande_df.iterrows():
     user_message = domanda['domanda']
     piatti_num = loop_get_piatti(user_message)
+    if piatti_num == []:
+        piatti_num =[1]
     
     piatti_str = ",".join(map(str, piatti_num)) if isinstance(piatti_num, list) else str(piatti_num)
     results.append({"row_id": i + 1, "result": piatti_str})
@@ -460,5 +277,4 @@ for i, domanda in domande_df.iterrows():
     else:
         results_df = pd.DataFrame([results[-1]])
         results_df.to_csv("./data/results.csv", index=False, mode='a', header=False)
-    break
 
